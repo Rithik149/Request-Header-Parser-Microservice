@@ -22,9 +22,13 @@ app.get('/api/hello', function (req, res) {
 
 app.get('/api/whoami',(req,res)=>{
   let ip =req.ip;
-  const language = req.get('Accept-Language'); // there is also req. acceptsLanguages() function but it returns as array so i used this for save few codes
+  const userlanguage = req.get('Accept-Language'); // there is also req. acceptsLanguages() function but it returns as array so i used this for save few codes
   let browser=req.get('User-Agent');
-  res.json()
+  res.json({
+    ipaddress:ip,
+    language:userlanguage,
+    software:browser
+  })
 })
 
 // listen for requests :)
