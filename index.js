@@ -1,7 +1,3 @@
-// index.js
-// where your node app starts
-
-// init project
 require('dotenv').config();
 var express = require('express');
 var app = express();
@@ -23,6 +19,13 @@ app.get('/', function (req, res) {
 app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
+
+app.get('/api/whoami',(req,res)=>{
+  let ip =req.ip;
+  const language = req.get('Accept-Language'); // there is also req. acceptsLanguages() function but it returns as array so i used this for save few codes
+  let browser=req.get('User-Agent');
+  res.json()
+})
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT || 3000, function () {
